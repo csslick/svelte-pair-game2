@@ -1,8 +1,14 @@
 <script>
+  import GameTitle from "./lib/components/GameTitle.svelte";
+  import GameScore from "./lib/components/GameScore.svelte";
+  import GamePlay from "./lib/components/GamePlay.svelte";
 
+  const gameTitle = "Pair Game";
 </script>
 
 <main>
-  <h1>Pair Game</h1>
+  <GameTitle title = {gameTitle} />
+  <GamePlay />
+  <GameScore />
 </main>
 
