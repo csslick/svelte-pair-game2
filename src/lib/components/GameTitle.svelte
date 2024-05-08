@@ -11,8 +11,8 @@
     <section class="itim-regular">
       <h1>{title}</h1>
       <div class="btn-group">
-        <button class="btn" on:click={() => (page = "play")}>Start</button>
-        <button class="btn" on:click={() => (page = "score")}>Score</button>
+        <button class="btn" on:click={() => page = "play"}>Start</button>
+        <button class="btn" on:click={() => page = "score"}>Score</button>
       </div>
     </section>
   {:else if page === "play"}
