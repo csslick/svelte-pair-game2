@@ -1,8 +1,9 @@
 <script>
   import GameInfo from "./GameInfo.svelte";
+  import GameGrid from "./GameGrid.svelte";
 </script>
 
 <main>
   <GameInfo />
-  <h1>Game Play</h1>
+  <GameGrid />
 </main>
