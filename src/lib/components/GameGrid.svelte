@@ -52,32 +52,38 @@
   // id:카드번호, flipped: 뒤집혀진 상태, matched: 매칭된 상태
   let cards = [
     { id: 0, flipped: true, matched: false },
-    { id: 0, flipped: false, matched: false },
-    { id: 1, flipped: false, matched: false },
-    { id: 1, flipped: false, matched: false },
-    { id: 2, flipped: false, matched: false },
-    { id: 2, flipped: false, matched: false },
-    { id: 3, flipped: false, matched: false },
-    { id: 3, flipped: false, matched: false },
-    { id: 4, flipped: false, matched: false },
-    { id: 4, flipped: false, matched: false },
-    { id: 5, flipped: false, matched: false },
-    { id: 5, flipped: false, matched: false },
-    { id: 6, flipped: false, matched: false },
-    { id: 6, flipped: false, matched: false },
-    { id: 7, flipped: false, matched: false },
-    { id: 7, flipped: false, matched: false },
+    { id: 0, flipped: true, matched: false },
+    { id: 1, flipped: true, matched: false },
+    { id: 1, flipped: true, matched: false },
+    { id: 2, flipped: true, matched: false },
+    { id: 2, flipped: true, matched: false },
+    { id: 3, flipped: true, matched: false },
+    { id: 3, flipped: true, matched: false },
+    { id: 4, flipped: true, matched: false },
+    { id: 4, flipped: true, matched: false },
+    { id: 5, flipped: true, matched: false },
+    { id: 5, flipped: true, matched: false },
+    { id: 6, flipped: true, matched: false },
+    { id: 6, flipped: true, matched: false },
+    { id: 7, flipped: true, matched: false },
+    { id: 7, flipped: true, matched: false },
   ]
+
+  // 카드 랜덤하게 섞기
+  function shuffle() {
+    cards = cards.sort(() => 0.5 - Math.random())
+  }
 </script>
 
 <h1>Game Grid</h1>
 <ul class="game-grid">
   {#each cards as card}
-    <li class="card">
+    <li class={card.flipped === true ? "card" : "card hidden"}>
       <img src={card_data[card.id].imgUrl} alt="">
     </li>
   {/each}
 </ul>
+<button on:click={shuffle}>Shuffle</button>
 
 
 <style lang='scss'>
@@ -104,4 +110,12 @@
   }
 
   // 카드가 뒤집혀진 상태
+  .game-grid .card.hidden {
+    background: rgba(0,0,0, 0.5);
+    img { opacity: 0; }
+    background-image: url('images/quest.png');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+  }
 </style>
