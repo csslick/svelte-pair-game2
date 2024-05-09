@@ -73,7 +73,7 @@
 <h1>Game Grid</h1>
 <ul class="game-grid">
   {#each cards as card}
-    <li class={card.flipped === true ? "card" : "card hidden"}>
+    <li class="card">
       <img src={card_data[card.id].imgUrl} alt="">
     </li>
   {/each}
@@ -98,17 +98,10 @@
         width: 100%;
         object-fit: contain;
         display: block;
+        aspect-ratio: 1 / 1;
       }
     }
   }
 
   // 카드가 뒤집혀진 상태
-  .game-grid .card.hidden {
-    background: rgba(0,0,0, 0.5);
-    img { opacity: 0; }
-    background-image: url('images/quest.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 30%;
-  }
 </style>
