@@ -51,34 +51,49 @@
   // 카드 목록
   // id:카드번호, flipped: 뒤집혀진 상태, matched: 매칭된 상태
   let cards = [
-    { id: 0, flipped: true, matched: false },
-    { id: 0, flipped: true, matched: false },
-    { id: 1, flipped: true, matched: false },
-    { id: 1, flipped: true, matched: false },
-    { id: 2, flipped: true, matched: false },
-    { id: 2, flipped: true, matched: false },
-    { id: 3, flipped: true, matched: false },
-    { id: 3, flipped: true, matched: false },
-    { id: 4, flipped: true, matched: false },
-    { id: 4, flipped: true, matched: false },
-    { id: 5, flipped: true, matched: false },
-    { id: 5, flipped: true, matched: false },
-    { id: 6, flipped: true, matched: false },
-    { id: 6, flipped: true, matched: false },
-    { id: 7, flipped: true, matched: false },
-    { id: 7, flipped: true, matched: false },
+    { id: 0, flipped: false, matched: false },
+    { id: 0, flipped: false, matched: false },
+    { id: 1, flipped: false, matched: false },
+    { id: 1, flipped: false, matched: false },
+    { id: 2, flipped: false, matched: false },
+    { id: 2, flipped: false, matched: false },
+    { id: 3, flipped: false, matched: false },
+    { id: 3, flipped: false, matched: false },
+    { id: 4, flipped: false, matched: false },
+    { id: 4, flipped: false, matched: false },
+    { id: 5, flipped: false, matched: false },
+    { id: 5, flipped: false, matched: false },
+    { id: 6, flipped: false, matched: false },
+    { id: 6, flipped: false, matched: false },
+    { id: 7, flipped: false, matched: false },
+    { id: 7, flipped: false, matched: false },
   ]
 
   // 카드 랜덤하게 섞기
   function shuffle() {
     cards = cards.sort(() => 0.5 - Math.random())
   }
+
+  // 카드 뒤집기
+  function flipCard(i) {
+    // 카드가 뒷면일 때 보여주기
+    if(cards[i].flipped === false) {
+      cards[i].flipped = true;
+    }
+    // 1초 후에 다시 카드가 닫힘
+    setTimeout(() => {
+      cards[i].flipped = false;
+    }, 1000)
+  }
+
 </script>
 
 <h1>Game Grid</h1>
 <ul class="game-grid">
-  {#each cards as card}
-    <li class={card.flipped === true ? "card" : "card hidden"}>
+  {#each cards as card, i}
+    <li
+      on:click={() => flipCard(i)} 
+      class={card.flipped === true ? "card" : "card hidden"}>
       <img src={card_data[card.id].imgUrl} alt="">
     </li>
   {/each}
