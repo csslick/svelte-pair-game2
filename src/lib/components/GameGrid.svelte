@@ -95,17 +95,13 @@
       <button on:click={() => flipCard(i)}>
         <img src={card_data[card.id].imgUrl} alt="">
       </button>
-    </li>
+    </li> 
   {/each}
 </ul>
 <button on:click={shuffle}>Shuffle</button>
 
 
 <style lang='scss'>
-  button {
-    background: transparent;
-    border: none;
-  }
   .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -113,6 +109,11 @@
     list-style-type: none;
     grid-gap: 2%;
     padding: 20px;
+    
+    button {
+    background: transparent;
+    border: none;
+  }
 
     .card {
       background: #fff;
