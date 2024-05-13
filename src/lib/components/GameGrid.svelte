@@ -1,52 +1,52 @@
 <script>
-  // 카드 데이터
-  const card_data = [
+    // 카드 데이터
+    const card_data = [
     {
       id: 0,
-      name: "html",
-      imgUrl: "images/html.png",
+      name: 'html',
+      imgUrl: 'images/html.png',
     },
     {
       id: 1,
-      name: "css",
-      imgUrl: "images/css.png",
+      name: 'css',
+      imgUrl: 'images/css.png',
     },
     {
       id: 2,
-      name: "js",
-      imgUrl: "images/js.png",
+      name: 'js',
+      imgUrl: 'images/js.png',
     },
     {
       id: 3,
-      name: "react",
-      imgUrl: "images/react.png",
+      name: 'react',
+      imgUrl: 'images/react.png',
     },
     {
       id: 4,
-      name: "vue",
-      imgUrl: "images/vue.png",
+      name: 'vue',
+      imgUrl: 'images/vue.png',
     },
     {
       id: 5,
-      name: "svelte",
-      imgUrl: "images/svelte.png",
+      name: 'svelte',
+      imgUrl: 'images/svelte.png',
     },
     {
       id: 6,
-      name: "sass",
-      imgUrl: "images/sass.png",
+      name: 'sass',
+      imgUrl: 'images/sass.png',
     },
     {
       id: 7,
-      name: "github",
-      imgUrl: "images/github.png",
+      name: 'github',
+      imgUrl: 'images/github.png',
     },
     {
       id: 8,
-      name: "quest",
-      imgUrl: "images/quest.png",
+      name: 'quest',
+      imgUrl: 'images/quest.png',
     },
-  ];
+  ]
 
   // 카드 목록
   // id:카드번호, flipped: 뒤집혀진 상태, matched: 매칭된 상태
@@ -67,24 +67,25 @@
     { id: 6, flipped: false, matched: false },
     { id: 7, flipped: false, matched: false },
     { id: 7, flipped: false, matched: false },
-  ];
+  ]
 
   // 카드 랜덤하게 섞기
   function shuffle() {
-    cards = cards.sort(() => 0.5 - Math.random());
+    cards = cards.sort(() => 0.5 - Math.random())
   }
 
-  // 카드 뒤집기!
+  // 카드 뒤집기! 
   function flipCard(i) {
     // 카드가 뒷면일 때 보여주기
-    if (cards[i].flipped === false) {
+    if(cards[i].flipped === false) {
       cards[i].flipped = true;
     }
     // 1초 후에 다시 카드가 닫힘
     setTimeout(() => {
       cards[i].flipped = false;
-    }, 1000);
+    }, 1000)
   }
+
 </script>
 
 <h1>Game Grid</h1>
@@ -92,14 +93,15 @@
   {#each cards as card, i}
     <li class={card.flipped === true ? "card" : "card hidden"}>
       <button on:click={() => flipCard(i)}>
-        <img src={card_data[card.id].imgUrl} alt="" />
+        <img src={card_data[card.id].imgUrl} alt="">
       </button>
-    </li>
+    </li> 
   {/each}
 </ul>
 <button on:click={shuffle}>Shuffle</button>
 
-<style lang="scss">
+
+<style lang='scss'>
   .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -109,9 +111,9 @@
     padding: 20px;
 
     button {
-      background: transparent;
-      border: none;
-    }
+     background: transparent;
+     border: none;
+  }
 
     .card {
       background: #fff;
@@ -129,11 +131,9 @@
 
   // 카드가 뒤집혀진 상태
   .game-grid .card.hidden {
-    background: rgba(0, 0, 0, 0.5);
-    img {
-      opacity: 0;
-    }
-    background-image: url("images/quest.png");
+    background: rgba(0,0,0, 0.5);
+    img { opacity: 0; }
+    background-image: url('images/quest.png');
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: center;
