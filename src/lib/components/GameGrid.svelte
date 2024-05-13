@@ -74,7 +74,7 @@
     cards = cards.sort(() => 0.5 - Math.random())
   }
 
-  // 카드 뒤집기
+  // 카드 뒤집기!
   function flipCard(i) {
     // 카드가 뒷면일 때 보여주기
     if(cards[i].flipped === false) {
