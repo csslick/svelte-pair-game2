@@ -74,7 +74,7 @@
     cards = cards.sort(() => 0.5 - Math.random())
   }
 
-  // 카드 뒤집기!
+  // 카드 뒤집기! 
   function flipCard(i) {
     // 카드가 뒷면일 때 보여주기
     if(cards[i].flipped === false) {
@@ -91,10 +91,10 @@
 <h1>Game Grid</h1>
 <ul class="game-grid">
   {#each cards as card, i}
-    <li
-      on:click={() => flipCard(i)} 
-      class={card.flipped === true ? "card" : "card hidden"}>
-      <img src={card_data[card.id].imgUrl} alt="">
+    <li class={card.flipped === true ? "card" : "card hidden"}>
+      <button on:click={() => flipCard(i)}>
+        <img src={card_data[card.id].imgUrl} alt="">
+      </button>
     </li>
   {/each}
 </ul>
@@ -102,6 +102,10 @@
 
 
 <style lang='scss'>
+  button {
+    background: transparent;
+    border: none;
+  }
   .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
