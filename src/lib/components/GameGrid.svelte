@@ -74,17 +74,32 @@
     cards = cards.sort(() => 0.5 - Math.random())
   }
 
-  // 카드 뒤집기! 
+  // 카드 뒤집기!
   function flipCard(i) {
     // 카드가 뒷면일 때 보여주기
     if(cards[i].flipped === false) {
       cards[i].flipped = true;
     }
+
     // 1초 후에 다시 카드가 닫힘
     setTimeout(() => {
       cards[i].flipped = false;
     }, 1000)
+
+    // 카드 매칭 체크
+    checkMatch(i);
   }
+
+  // 클릭한 카드 저장 배열
+  let pairArr = [null, null]; // 2개의 카드 저장
+
+  // 카드 매칭 체크
+  function checkMatch(i) {
+    pairArr.push(i); // 클릭한 카드 번호 저장
+    pairArr.shift(); // 이전 카드 번호 삭제
+    console.log(pairArr);
+  }
+
 
 </script>
 
