@@ -72,6 +72,10 @@
   // 카드 랜덤하게 섞기
   function shuffle() {
     cards = cards.sort(() => 0.5 - Math.random())
+    cards.forEach(card => {
+      card.flipped = false;
+      card.matched = false;
+    })
   }
 
   // 카드 뒤집기!
@@ -104,7 +108,10 @@
     }
 
     // 카드 일치 판정
-    if(cards[pairArr[0]]?.id === cards[pairArr[1]].id) {
+    if(
+      cards[pairArr[0]]?.id === cards[pairArr[1]].id && 
+      cards[pairArr[0]].flipped === true
+    ) {
       cards[pairArr[0]].matched = true;
       cards[pairArr[1]].matched = true;
     }
@@ -116,7 +123,7 @@
 <h1>Game Grid</h1>
 <ul class="game-grid">
   {#each cards as card, i}
-    <li class={card.flipped === true ? "card" : "card hidden"}>
+    <li class={card.flipped || card.matched === true ? "card" : "card hidden"}>
       <button on:click={() => flipCard(i)}>
         <img src={card_data[card.id].imgUrl} alt="">
       </button>
@@ -125,7 +132,7 @@
     </li> 
   {/each}
 </ul>
-<button on:click={shuffle}>Shuffle</button>
+<br><button on:click={shuffle}>Shuffle</button>
 
 
 <style lang='scss'>
