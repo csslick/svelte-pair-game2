@@ -95,9 +95,19 @@
 
   // 카드 매칭 체크
   function checkMatch(i) {
-    pairArr.push(i); // 클릭한 카드 번호 저장
-    pairArr.shift(); // 이전 카드 번호 삭제
-    console.log(pairArr);
+    // 카드 위치가 다를 때만 추가
+    if(pairArr[1] !== i) {
+      pairArr.push(i); // 클릭한 카드 번호 저장
+      pairArr.shift(); // 이전 카드 번호 삭제
+      console.log(pairArr);
+      console.log(cards[pairArr[0]]?.id, cards[pairArr[1]].id);
+    }
+
+    // 카드 일치 판정
+    if(cards[pairArr[0]]?.id === cards[pairArr[1]].id) {
+      cards[pairArr[0]].matched = true;
+      cards[pairArr[1]].matched = true;
+    }
   }
 
 
@@ -110,6 +120,8 @@
       <button on:click={() => flipCard(i)}>
         <img src={card_data[card.id].imgUrl} alt="">
       </button>
+      <span style='position:absolute;'>{card.id}</span>
+      <span style='position:absolute; bottom:0;'>{card.matched}</span>
     </li> 
   {/each}
 </ul>
@@ -131,6 +143,7 @@
   }
 
     .card {
+      position: relative;
       background: #fff;
       aspect-ratio: 1 / 1;
       padding: 20%;
