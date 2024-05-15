@@ -1,4 +1,5 @@
 <script>
+  import Modal from './Modal.svelte';
     // 카드 데이터
     const card_data = [
     {
@@ -71,6 +72,7 @@
 
   // 카드 랜덤하게 섞기
   function shuffle() {
+    isGameClear = false; // 게임 클리어 판정 변수 초기화
     cards = cards.sort(() => 0.5 - Math.random())
     cards.forEach(card => {
       card.flipped = false;
@@ -141,6 +143,9 @@
 </ul>
 <br><button on:click={shuffle}>Shuffle</button>
 
+{#if isGameClear}
+  <Modal shuffle={shuffle} />
+{/if}
 
 <style lang='scss'>
   .game-grid {
