@@ -97,6 +97,9 @@
   // 클릭한 카드 저장 배열
   let pairArr = [null, null]; // 2개의 카드 저장
 
+  // 게임 클리어 판정 변수
+  let isGameClear = false;
+
   // 카드 매칭 체크
   function checkMatch(i) {
     // 카드 위치가 다를 때만 추가
@@ -115,6 +118,10 @@
       cards[pairArr[0]].matched = true;
       cards[pairArr[1]].matched = true;
     }
+
+    // 게임 클리어 판정 - 모든 카드가 매칭된 상태일 때
+    isGameClear = cards.every(card => card.matched === true);
+    console.log(isGameClear)
   }
 
 
