@@ -1,7 +1,9 @@
 <script>
+    import { onDestroy, onMount } from 'svelte';
+  import { score } from '../../store/store';
   import Modal from './Modal.svelte';
     // 카드 데이터
-    const card_data = [
+  const card_data = [
     {
       id: 0,
       name: 'html',
@@ -119,6 +121,7 @@
     ) {
       cards[pairArr[0]].matched = true;
       cards[pairArr[1]].matched = true;
+      $score += 100;
     }
 
     // 게임 클리어 판정 - 모든 카드가 매칭된 상태일 때
@@ -126,10 +129,18 @@
     console.log(isGameClear)
   }
 
+  // 게임 오버 상태 변수
+  let isGameOver = false;
+
+  onMount(() => {
+    console.log('onMount 게임시작')
+  })
+  onDestroy(() => {
+    console.log('onDestroy 게임종료')
+  })
 
 </script>
 
-<h1>Game Grid</h1>
 <ul class="game-grid">
   {#each cards as card, i}
     <li class={card.flipped || card.matched === true ? "card" : "card hidden"}>
@@ -141,12 +152,26 @@
     </li> 
   {/each}
 </ul>
-<br><button on:click={shuffle}>Shuffle</button>
+<!-- <br><button on:click={shuffle}>Shuffle</button> -->
 
 {#if isGameClear}
-  <Modal shuffle={shuffle} />
+  <Modal 
+    {shuffle} 
+    modalTitle={'Game Clear!'} 
+    scoreTitle={'Score'} 
+    btn1Text={'Next'}
+  />
 {/if}
 
+{#if isGameOver}
+  <Modal 
+    {shuffle} 
+    modalTitle={'Game Over'} 
+    scoreTitle={'Final Score'} 
+    btn1Text={'Replay'}
+  />
+{/if}
+ 
 <style lang='scss'>
   .game-grid {
     display: grid;
