@@ -1,16 +1,20 @@
+<script>
+  import { score, round, time } from '../../store/store.js';
+</script>
+
 <header class="game-info itim-regular">
   <dl>
     <div class="score">
       <dt>Score</dt>
-      <dd>999,999</dd>
+      <dd>{$score}</dd>
     </div>
     <div class="round">
       <dt>Round</dt>
-      <dd>99</dd>
+      <dd>{$round}</dd>
     </div>
     <div class="time">
       <dt>Time</dt>
-      <dd>60</dd>
+      <dd>{$time}</dd>
     </div>
   </dl>
 </header>

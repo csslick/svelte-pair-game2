@@ -1,4 +1,5 @@
 <script>
+  import { score } from '../../store/store.js';
   import Modal from "./Modal.svelte";
   // 카드 데이터
   const card_data = [
@@ -119,6 +120,7 @@
     ) {
       cards[pairArr[0]].matched = true;
       cards[pairArr[1]].matched = true;
+      $score += 100;
     }
 
     // 게임 클리어 판정 - 모든 카드가 매칭된 상태일 때
