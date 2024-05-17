@@ -119,6 +119,7 @@
     ) {
       cards[pairArr[0]].matched = true;
       cards[pairArr[1]].matched = true;
+      $score += 100;
     }
 
     // 게임 클리어 판정 - 모든 카드가 매칭된 상태일 때
@@ -130,7 +131,7 @@
   let isGameOver = false;
 </script>
 
-<!-- <h1>Game Grid</h1> -->
+
 <ul class="game-grid">
   {#each cards as card, i}
     <li class={card.flipped || card.matched === true ? "card" : "card hidden"}>
@@ -162,7 +163,7 @@
   />
 {/if}
 
-<style lang="scss">
+<style lang='scss'>
   .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
