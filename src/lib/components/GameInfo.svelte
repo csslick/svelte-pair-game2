@@ -1,5 +1,5 @@
 <script>
-  import { score, round, time } from '../../store/store';
+  import { score, round, time } from '../../store/store.js';
 </script>
 
 <header class="game-info itim-regular">

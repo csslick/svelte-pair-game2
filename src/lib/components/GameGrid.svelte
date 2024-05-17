@@ -1,4 +1,5 @@
 <script>
+  import { score } from '../../store/store.js';
   import Modal from "./Modal.svelte";
   // 카드 데이터
   const card_data = [
