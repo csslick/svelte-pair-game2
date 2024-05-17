@@ -1,13 +1,16 @@
 <script>
   export let shuffle = function(){};
+  export let modalTitle = "";
+  export let scoreTitle = "";
+  export let btn1Text = "";
 </script>
 
 <div class="modal">
   <div class="modal-container">
-    <h1>Game Clear!</h1>
-    <p class="bonus-score-title">Bonus score</p>
-    <p class="bonus-score">5,000</p>
-    <button class="btn next" on:click={shuffle}>Next</button>
+    <h1>{modalTitle}</h1>
+    <p class="score-title">{scoreTitle}</p>
+    <p class="score">5,000</p>
+    <button class="btn next" on:click={shuffle}>{btn1Text}</button>
     <button class="btn">Home</button>
   </div>
 </div>
@@ -34,11 +37,11 @@
       border-radius: 30px;
       border: 10px solid #000;
       h1 { margin-bottom: 5px; }
-      .bonus-score-title {
+      .score-title {
         font-size: 20px;
         color: #666;
       }
-      .bonus-score {
+      .score {
         font-size: 36px;
         color: #f63030;
         margin-bottom: 20px;
