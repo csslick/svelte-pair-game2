@@ -1,4 +1,5 @@
 <script>
+  import { score, round, time, page } from '../../store/store';
   export let shuffle = function(){};
   export let modalTitle = "";
   export let scoreTitle = "";

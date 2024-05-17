@@ -132,7 +132,7 @@
   let isGameOver = false;
 </script>
 
-<!-- <h1>Game Grid</h1> -->
+
 <ul class="game-grid">
   {#each cards as card, i}
     <li class={card.flipped || card.matched === true ? "card" : "card hidden"}>
@@ -164,7 +164,7 @@
   />
 {/if}
 
-<style lang="scss">
+<style lang='scss'>
   .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
