@@ -1,5 +1,5 @@
 <script>
-  import { score, round, time } from '../../store/store';
+  import { score, round, time } from '../../store/store.js';
   export let shuffle = function(){};
   export let modalTitle = "";
   export let scoreTitle = "";
@@ -10,8 +10,21 @@
   <div class="modal-container">
     <h1>{modalTitle}</h1>
     <p class="score-title">{scoreTitle}</p>
-    <p class="score">5,000</p>
-    <button class="btn next" on:click={shuffle}>{btn1Text}</button>
+    <p class="score">{$score}</p>
+    <button 
+      class="btn next" 
+      on:click={() => {
+        if(btn1Text === "Next") {
+          shuffle();
+          $round += 1;
+          $time = 100;
+        } else {
+          $score = 0;
+          $round = 1;
+          $time = 100;
+        }
+      }}
+    >{btn1Text}</button>
     <button class="btn">Home</button>
   </div>
 </div>
