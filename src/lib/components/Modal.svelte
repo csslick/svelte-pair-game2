@@ -14,8 +14,9 @@
     <button 
       class="btn next" 
       on:click={() => {
+        shuffle(); // 여기로 옮겨 주세요(공통 기능)
         if(btn1Text === "Next") {
-          shuffle();
+          // shuffle();
           $round += 1;
           $time = 100;
         } else {
