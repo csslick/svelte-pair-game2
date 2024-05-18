@@ -1,5 +1,5 @@
 <script>
-  import { score, round, time } from '../../store/store.js';
+  import { score, round, time, page } from '../../store/store.js';
   export let shuffle = function(){};
   export let modalTitle = "";
   export let scoreTitle = "";
@@ -25,7 +25,12 @@
         }
       }}
     >{btn1Text}</button>
-    <button class="btn">Home</button>
+    <button 
+      class="btn"
+      on:click={ () => {
+        $page = "title";
+      }}
+    >Home</button>
   </div>
 </div>
 
