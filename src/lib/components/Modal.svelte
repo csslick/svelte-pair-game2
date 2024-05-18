@@ -1,5 +1,5 @@
 <script>
-  import { score, round, time, page } from '../../store/store.js';
+  import { score, round, time } from '../../store/store.js';
   export let shuffle = function(){};
   export let modalTitle = "";
   export let scoreTitle = "";
@@ -14,8 +14,9 @@
     <button 
       class="btn next" 
       on:click={() => {
+        shuffle(); // 여기로 옮겨 주세요(공통 기능)
         if(btn1Text === "Next") {
-          shuffle();
+          // shuffle();
           $round += 1;
           $time = 100;
         } else {
@@ -25,12 +26,7 @@
         }
       }}
     >{btn1Text}</button>
-    <button 
-      class="btn" 
-      on:click={() => {
-        $page = "title";
-      }}
-      >Home</button>
+    <button class="btn">Home</button>
   </div>
 </div>
 

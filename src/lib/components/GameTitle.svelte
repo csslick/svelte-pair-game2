@@ -1,24 +1,23 @@
 <script>
-  import { page } from '../../store/store.js';
   import GameScore from "./GameScore.svelte";
   import GamePlay from "./GamePlay.svelte";
 
   export let title;
-  // let page = "title"; // title, play, score
+  let page = "title"; // title, play, score
 </script>
 
 <main>
-  {#if $page === "title"}
+  {#if page === "title"}
     <section class="itim-regular">
       <h1>{title}</h1>
       <div class="btn-group">
-        <button class="btn" on:click={() => $page = "play"}>Start</button>
-        <button class="btn" on:click={() => $page = "score"}>Score</button>
+        <button class="btn" on:click={() => page = "play"}>Start</button>
+        <button class="btn" on:click={() => page = "score"}>Score</button>
       </div>
     </section>
-  {:else if $page === "play"}
+  {:else if page === "play"}
     <GamePlay />
-  {:else if $page === "score"}
+  {:else if page === "score"}
     <!-- <GameScore bind:page /> -->
     <GameScore />
   {/if}
