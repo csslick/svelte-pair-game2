@@ -1,5 +1,5 @@
 <script>
-  import { score } from '../../store/store.js';
+  import { score, time } from "../../store/store.js";
   import Modal from "./Modal.svelte";
   // 카드 데이터
   const card_data = [
@@ -79,6 +79,7 @@
       card.flipped = false;
       card.matched = false;
     });
+    startTimer();
   }
 
   // 카드 뒤집기!
@@ -130,8 +131,23 @@
 
   // 게임 오버 상태
   let isGameOver = false;
-</script>
 
+  let timer;
+  // 타이머 기능을 추가해서 time 변수를 1초씩 감소시키고, 0이되면 게임 오버
+
+  function startTimer() {
+    timer = setInterval(() => {
+      $time -= 1;
+      if ($time === 0) {
+        isGameOver = true; // 게임 오버 상태
+        clearInterval(timer); // 타이머 중지
+      }
+    }, 1000);
+  }
+
+  // 게임 시작시 카드 랜덤하게 섞기
+  shuffle();
+</script>
 
 <ul class="game-grid">
   {#each cards as card, i}
@@ -164,7 +180,7 @@
   />
 {/if}
 
-<style lang='scss'>
+<style lang="scss">
   .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

@@ -1,5 +1,6 @@
 <script>
-  export let page = '';
+  // export let page = '';
+  import { page } from "../../store/store.js";
 </script>
 
 <main>
@@ -10,7 +11,7 @@
   </div>
   <button 
     class="btn itim-regular"
-    on:click={() => page="title" }>Back to home</button>
+    on:click={() => $page="title" }>Back to home</button>
 </main>
 
 <style lang='scss'>

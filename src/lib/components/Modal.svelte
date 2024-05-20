@@ -22,6 +22,7 @@
           $score = 0;
           $round = 1;
           $time = 100;
+          $page = "title";
         }
       }}
     >{btn1Text}</button>
@@ -29,6 +30,9 @@
       class="btn"
       on:click={ () => {
         $page = "title";
+        $score = 0;
+        $round = 1;
+        $time = 100;
       }}
     >Home</button>
   </div>
