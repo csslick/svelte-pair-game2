@@ -142,6 +142,7 @@
         isGameOver = true; // 게임 오버 상태
         clearInterval(timer); // 타이머 중지
       }
+      if(isGameClear) clearInterval(timer); // 게임 클리어시 타이머 중지
     }, 1000);
   }
 
