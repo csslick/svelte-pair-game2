@@ -1,13 +1,18 @@
 <script>
   // export let page = '';
   import { page } from "../../store/store.js";
+
+  // localStorage에서 점수기록 가져오기
+  const hiScore = localStorage.getItem("hiScore") || 0;
+  const lastScore = localStorage.getItem("lastScore") || 0;
+  console.log(hiScore, lastScore);
 </script>
 
 <main>
   <h1 class="itim-regular">Game Score</h1>
   <div class="score">
-    <p class="hi-score">Hi score: <span>999,999,999</span></p>
-    <p class="your-score">Your score: <span>999,999</span></p>
+    <p class="hi-score">Hi score: <span>{hiScore}</span></p>
+    <p class="your-score">Last score: <span>{lastScore}</span></p>
   </div>
   <button 
     class="btn itim-regular"

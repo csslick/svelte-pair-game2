@@ -4,6 +4,21 @@
   export let modalTitle = "";
   export let scoreTitle = "";
   export let btn1Text = "";
+
+  function setHiScore() {
+    // localStorage에 hiScore를 저장하고 가져오기
+    let hiScore = 0; // 최고 점수 저장 변수
+
+    hiScore = localStorage.getItem("hiScore") || 0; // hiScore가 없으면 0으로 초기화
+    console.log(hiScore);
+
+    // 최고 점수일 경우에만 저장
+    if ($score > hiScore) {
+      localStorage.setItem("hiScore", $score);
+    }
+    // 마지막에 득점한 스코어를 저장
+    localStorage.setItem("lastScore", $score);
+  }
 </script>
 
 <div class="modal">
@@ -14,6 +29,7 @@
     <button 
       class="btn next" 
       on:click={() => {
+        setHiScore();
         if(btn1Text === "Next") {
           shuffle();
           $round += 1;
@@ -29,6 +45,7 @@
     <button 
       class="btn"
       on:click={ () => {
+        setHiScore();
         $page = "title";
         $score = 0;
         $round = 1;

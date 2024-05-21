@@ -35,11 +35,14 @@
     .btn-group {
       display: flex;
       flex-direction: column;
+      align-items: center;
       margin-top: 40px;
       button {
+        display: inline;
         padding: 10px;
         font-size: 32px;
         background: transparent;
+        width: 5em;
         border: none;
         &:hover {
           text-decoration: underline;
