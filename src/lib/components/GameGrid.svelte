@@ -156,8 +156,8 @@
       <button on:click={() => flipCard(i)}>
         <img src={card_data[card.id].imgUrl} alt="" />
       </button>
-      <span style="position:absolute;">{card.id}</span>
-      <span style="position:absolute; bottom:0;">{card.matched}</span>
+      <!-- <span style="position:absolute;">{card.id}</span>
+      <span style="position:absolute; bottom:0;">{card.matched}</span> -->
     </li>
   {/each}
 </ul>
@@ -174,6 +174,7 @@
 
 {#if isGameOver}
   <Modal
+    bind:isGameOver={isGameOver}
     {shuffle}
     modalTitle="Game Over"
     scoreTitle="Final Score"

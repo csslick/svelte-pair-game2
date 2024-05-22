@@ -1,9 +1,10 @@
 <script>
-  import { score, round, time, page } from '../../store/store.js';
+  import { score, round, time, page, initScore, initTime } from '../../store/store.js';
   export let shuffle = function(){};
   export let modalTitle = "";
   export let scoreTitle = "";
   export let btn1Text = "";
+  export let isGameOver = false;
 
   function setHiScore() {
     // localStorage에 hiScore를 저장하고 가져오기
@@ -33,12 +34,17 @@
         if(btn1Text === "Next") {
           shuffle();
           $round += 1;
-          $time = 100;
+          // $time = 100;
+          initTime();
         } else {
-          $score = 0;
-          $round = 1;
-          $time = 100;
-          $page = "title";
+          // Replay 버튼을 눌렀을 때 게임 재시작
+          // $score = 0;
+          // $round = 1;
+          // $time = 100;
+          initScore();
+          $page = "play";
+          isGameOver = false;
+          shuffle();
         }
       }}
     >{btn1Text}</button>
@@ -47,9 +53,10 @@
       on:click={ () => {
         setHiScore();
         $page = "title";
-        $score = 0;
-        $round = 1;
-        $time = 100;
+        // $score = 0;
+        // $round = 1;
+        // $time = 100;
+        initScore();
       }}
     >Home</button>
   </div>
