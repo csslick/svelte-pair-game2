@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-const defaultTime = 60;
+const defaultTime = 10;
 
 // store 변수 만들기
 export const score = writable(0);

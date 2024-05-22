@@ -1,10 +1,35 @@
 <script>
+  import { onDestroy } from "svelte";
   import { page } from "../../store/store.js";
   import GameScore from "./GameScore.svelte";
   import GamePlay from "./GamePlay.svelte";
+  import bgm from "../../assets/audio/bgm.mp3";
 
   export let title;
   // let page = "title"; // title, play, score
+
+  let _BGM = new Audio(bgm);
+  
+  // BGM 재생
+  function playBGM() {
+    _BGM.loop = true; // 자동 반복
+    _BGM.play();
+  }
+
+  $: {
+    // 게임 화면이 아니면 BGM 멈춤
+    if ($page!== "play") {
+      _BGM.pause();
+      _BGM.currentTime = 0; // 처음부터 재생
+    }
+  }
+
+  // 컴포넌트 종료시 오디오 객체를 삭제
+  onDestroy(() => {
+    _BGM.pause();
+    _BGM.currentTime = 0; // 처음부터 재생
+    _BGM.remove();
+  });
 </script>
 
 <main>
@@ -12,7 +37,12 @@
     <section class="itim-regular">
       <h1>{title}</h1>
       <div class="btn-group">
-        <button class="btn" on:click={() => $page = "play"}>Start</button>
+        <button 
+          class="btn" 
+          on:click={
+            () => {$page = "play"; playBGM();}
+          }
+        >Start</button>
         <button class="btn" on:click={() => $page = "score"}>Score</button>
       </div>
     </section>

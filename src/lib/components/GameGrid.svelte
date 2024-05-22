@@ -1,6 +1,10 @@
 <script>
+  import soundSrcClick from "../../assets/audio/click.mp3";
   import { score, time } from "../../store/store.js";
   import Modal from "./Modal.svelte";
+
+  let clickSound = new Audio(soundSrcClick);
+
   // 카드 데이터
   const card_data = [
     {
@@ -153,7 +157,16 @@
 <ul class="game-grid">
   {#each cards as card, i}
     <li class={card.flipped || card.matched === true ? "card" : "card hidden"}>
-      <button on:click={() => flipCard(i)}>
+      <button 
+        on:click={
+          () => {
+            flipCard(i);
+            clickSound.currentTime = 0;
+            clickSound.pause();
+            clickSound.play();
+          }
+        }
+      >
         <img src={card_data[card.id].imgUrl} alt="" />
       </button>
       <!-- <span style="position:absolute;">{card.id}</span>
